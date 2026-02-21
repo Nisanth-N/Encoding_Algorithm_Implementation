@@ -5,12 +5,10 @@ import java.math.BigInteger;
 
 public class Algorithm {
 
-    // Convert value from given base to BigInteger
     private static BigInteger decodeValue(String value, int base) {
         return new BigInteger(value, base);
     }
 
-    // Lagrange Interpolation to compute f(0) = c using BigInteger
     private static BigInteger findC(BigInteger[] x, BigInteger[] y, int k) {
 
         BigInteger c = BigInteger.ZERO;
@@ -36,12 +34,10 @@ public class Algorithm {
 
     public static void main(String[] args) throws Exception {
 
-        // Read JSON file
         String content = new String(
                 Files.readAllBytes(Paths.get("input.json"))
         );
 
-        // Extract n and k
         int n = Integer.parseInt(
                 content.split("\"n\"\\s*:\\s*")[1].split(",")[0].trim()
         );
@@ -49,7 +45,6 @@ public class Algorithm {
                 content.split("\"k\"\\s*:\\s*")[1].split("\\}")[0].trim()
         );
 
-        // Threshold rule
         if (n == 10 && k < 7) {
             throw new IllegalArgumentException(
                 "For n = 10, threshold k must be at least 7"
@@ -86,4 +81,5 @@ public class Algorithm {
 
         System.out.println("Constant term c = " + c);
     }
+
 }
